@@ -1,0 +1,224 @@
+2025-03-03 18:58:32 - Initialized prediction with model path: ..\models\best_model_v6.pth
+2025-03-03 18:58:32 - Found 31 processed files matching pattern *_prepared_v6.csv
+2025-03-03 18:58:32 - Loading model from: ..\models\best_model_v6.pth
+2025-03-03 18:58:32 - Model initialized with:
+2025-03-03 18:58:32 -   - Input size: 33
+2025-03-03 18:58:32 -   - Hidden size: 192
+2025-03-03 18:58:32 -   - Num layers: 2
+2025-03-03 18:58:32 -   - Num heads: 4
+2025-03-03 18:58:32 -   - Num classes: 3
+2025-03-03 18:58:32 - Inspecting model architecture...
+2025-03-03 18:58:32 - Total parameters: 2,041,180
+2025-03-03 18:58:32 - Trainable parameters: 2,041,180
+2025-03-03 18:58:32 - Model has non-standard structure
+2025-03-03 18:58:32 - Model modules:
+2025-03-03 18:58:32 -   - feature_expansion: FeatureExpansion
+2025-03-03 18:58:32 -   - feature_expansion.expand: Sequential
+2025-03-03 18:58:32 -   - feature_expansion.expand.0: Linear [in: 33, out: 165]
+2025-03-03 18:58:32 -   - feature_expansion.expand.1: GELU
+2025-03-03 18:58:32 -   - feature_expansion.expand.2: Dropout
+2025-03-03 18:58:32 -   - feature_expansion.expand.3: Linear [in: 165, out: 33]
+2025-03-03 18:58:32 -   - feature_expansion.expand.4: LayerNorm
+2025-03-03 18:58:32 -   - pos_encoder: PositionalEncoding
+2025-03-03 18:58:32 -   - input_proj: Linear [in: 33, out: 192]
+2025-03-03 18:58:32 -   - lstm: LSTM [input: 192, hidden: 192, layers: 2]
+2025-03-03 18:58:32 -   - lstm_proj: Linear [in: 384, out: 192]
+2025-03-03 18:58:32 -   - attention: MultiHeadAttention
+2025-03-03 18:58:32 -   - attention.q_linear: Linear [in: 192, out: 192]
+2025-03-03 18:58:32 -   - attention.k_linear: Linear [in: 192, out: 192]
+2025-03-03 18:58:32 -   - attention.v_linear: Linear [in: 192, out: 192]
+2025-03-03 18:58:32 -   - attention.dropout: Dropout
+2025-03-03 18:58:32 -   - attention.out: Linear [in: 192, out: 192]
+2025-03-03 18:58:32 -   - feature_enhancement: EnhancedFeatureBlock
+2025-03-03 18:58:32 -   - feature_enhancement.linear1: Linear [in: 192, out: 768]
+2025-03-03 18:58:32 -   - feature_enhancement.linear2: Linear [in: 768, out: 192]
+2025-03-03 18:58:32 -   - feature_enhancement.norm1: LayerNorm
+2025-03-03 18:58:32 -   - feature_enhancement.norm2: LayerNorm
+2025-03-03 18:58:32 -   - feature_enhancement.dropout: Dropout
+2025-03-03 18:58:32 -   - attention_norm: LayerNorm
+2025-03-03 18:58:32 -   - fc: Sequential
+2025-03-03 18:58:32 -   - fc.0: Linear [in: 192, out: 96]
+2025-03-03 18:58:32 -   - fc.1: LayerNorm
+2025-03-03 18:58:32 -   - fc.2: GELU
+2025-03-03 18:58:32 -   - fc.3: Dropout
+2025-03-03 18:58:32 -   - fc.4: Linear [in: 96, out: 48]
+2025-03-03 18:58:32 -   - fc.5: LayerNorm
+2025-03-03 18:58:32 -   - fc.6: GELU
+2025-03-03 18:58:32 -   - fc.7: Dropout
+2025-03-03 18:58:32 -   - fc.8: Linear [in: 48, out: 3]
+2025-03-03 18:58:32 - Potential output layer: fc.8 (output dim: 3)
+2025-03-03 18:58:32 - Testing model predictions on random data...
+2025-03-03 18:58:32 - Test output shape: torch.Size([4, 288, 3])
+2025-03-03 18:58:32 - Test output range: min=-5.663021087646484, max=-5.662863731384277
+2025-03-03 18:58:32 - Output shape has 3 dimensions, expected 2
+2025-03-03 18:58:32 - Model output format is not as expected for classification
+2025-03-03 18:58:32 - Model prediction test failed. Attempting to patch model output.
+2025-03-03 18:58:32 - Patching model to ensure classification outputs
+2025-03-03 18:58:32 - Model output patched successfully
+2025-03-03 18:58:32 - Testing model predictions on random data...
+2025-03-03 18:58:32 - Test output shape: torch.Size([4, 3])
+2025-03-03 18:58:32 - Test output range: min=-5.6630144119262695, max=-5.662872314453125
+2025-03-03 18:58:32 - Model produces expected 3-class classification outputs
+2025-03-03 18:58:32 - Probabilities sum to ~1: tensor([1., 1., 1., 1.])
+2025-03-03 18:58:32 - Predicted classes: tensor([1, 1, 2, 1])
+2025-03-03 18:58:32 - Prediction values are within expected range (0-2)
+2025-03-03 18:58:32 - Model patching successful - outputs now in correct format
+2025-03-03 18:58:32 - Output layer dimension (from Sequential): 3
+2025-03-03 18:58:32 - Model loaded successfully
+2025-03-03 18:58:32 - 
+Processing file: C:\Users\xy2593\Desktop\CUSP-GX-9000 Guided Study\Data\ParticipantData\Participant#0150\rawData_to_csv_10Jul\P0150_prepared_v6.csv
+2025-03-03 18:58:33 - Loaded processed data from P0150_prepared_v6.csv, shape: (180738, 50)
+2025-03-03 18:58:33 - Creating windows with size 288
+2025-03-03 18:58:33 - Window at index 0 contains NaN values. Filling with forward fill.
+2025-03-03 18:58:33 - Window at index 0 still contains NaN values after filling. Skipping.
+2025-03-03 18:58:33 - Window at index 144 contains NaN values. Filling with forward fill.
+2025-03-03 18:58:33 - Window at index 288 contains NaN values. Filling with forward fill.
+2025-03-03 18:58:33 - Window at index 180144 contains NaN values. Filling with forward fill.
+2025-03-03 18:58:33 - Window at index 180288 contains NaN values. Filling with forward fill.
+2025-03-03 18:58:33 - Window at index 180432 contains NaN values. Filling with forward fill.
+2025-03-03 18:58:33 - Window at index 180432 still contains NaN values after filling. Skipping.
+2025-03-03 18:58:33 - Created 1252 windows
+2025-03-03 18:58:33 - Using 48 features for model input
+2025-03-03 18:58:34 - Prepared data shape: (1252, 288, 48)
+2025-03-03 18:58:34 - Making predictions
+2025-03-03 18:58:34 - Model structure: WristLSTM
+2025-03-03 18:58:34 - Error processing file C:\Users\xy2593\Desktop\CUSP-GX-9000 Guided Study\Data\ParticipantData\Participant#0150\rawData_to_csv_10Jul\P0150_prepared_v6.csv: Expected 33 features, got 48
+2025-03-03 18:58:34 - Traceback (most recent call last):
+  File "C:\Users\xy2593\Desktop\EmoMA-Net\Usage_v6_Brooklyn\scripts\predict_from_processed.py", line 728, in main
+    predictions = predict(model, X, device)
+  File "C:\Users\xy2593\Desktop\EmoMA-Net\Usage_v6_Brooklyn\scripts\predict_from_processed.py", line 564, in predict
+    first_outputs = model(first_batch)
+  File "C:\Users\xy2593\Desktop\EmoMA-Net\env\Lib\site-packages\torch\nn\modules\module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\xy2593\Desktop\EmoMA-Net\env\Lib\site-packages\torch\nn\modules\module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\xy2593\Desktop\EmoMA-Net\Usage_v6_Brooklyn\scripts\predict_from_processed.py", line 341, in patched_forward
+    outputs = original_forward(x, *args, **kwargs)
+  File "C:\Users\xy2593\Desktop\EmoMA-Net\Usage_v6_Brooklyn\models\wrist_model_v6_3class.py", line 159, in forward
+    assert feat_dim == 33, f"Expected 33 features, got {feat_dim}"
+           ^^^^^^^^^^^^^^
+AssertionError: Expected 33 features, got 48
+
+2025-03-03 18:58:34 - 
+Processing file: C:\Users\xy2593\Desktop\CUSP-GX-9000 Guided Study\Data\ParticipantData\Participant#0431\rawData_to_csv\P0431_prepared_v6.csv
+2025-03-03 18:58:34 - Loaded processed data from P0431_prepared_v6.csv, shape: (48802, 50)
+2025-03-03 18:58:34 - Creating windows with size 288
+2025-03-03 18:58:34 - Window at index 0 contains NaN values. Filling with forward fill.
+2025-03-03 18:58:34 - Window at index 0 still contains NaN values after filling. Skipping.
+2025-03-03 18:58:34 - Window at index 144 contains NaN values. Filling with forward fill.
+2025-03-03 18:58:34 - Window at index 288 contains NaN values. Filling with forward fill.
+2025-03-03 18:58:34 - Window at index 47808 contains NaN values. Filling with forward fill.
+2025-03-03 18:58:34 - Window at index 47952 contains NaN values. Filling with forward fill.
+2025-03-03 18:58:34 - Window at index 48096 contains NaN values. Filling with forward fill.
+2025-03-03 18:58:34 - Window at index 48096 still contains NaN values after filling. Skipping.
+2025-03-03 18:58:34 - Window at index 48240 contains NaN values. Filling with forward fill.
+2025-03-03 18:58:34 - Window at index 48240 still contains NaN values after filling. Skipping.
+2025-03-03 18:58:34 - Window at index 48384 contains NaN values. Filling with forward fill.
+2025-03-03 18:58:34 - Window at index 48384 still contains NaN values after filling. Skipping.
+2025-03-03 18:58:34 - Created 333 windows
+2025-03-03 18:58:34 - Using 48 features for model input
+2025-03-03 18:58:34 - Prepared data shape: (333, 288, 48)
+2025-03-03 18:58:34 - Making predictions
+2025-03-03 18:58:34 - Model structure: WristLSTM
+2025-03-03 18:58:34 - Error processing file C:\Users\xy2593\Desktop\CUSP-GX-9000 Guided Study\Data\ParticipantData\Participant#0431\rawData_to_csv\P0431_prepared_v6.csv: Expected 33 features, got 48
+2025-03-03 18:58:34 - Traceback (most recent call last):
+  File "C:\Users\xy2593\Desktop\EmoMA-Net\Usage_v6_Brooklyn\scripts\predict_from_processed.py", line 728, in main
+    predictions = predict(model, X, device)
+  File "C:\Users\xy2593\Desktop\EmoMA-Net\Usage_v6_Brooklyn\scripts\predict_from_processed.py", line 564, in predict
+    first_outputs = model(first_batch)
+  File "C:\Users\xy2593\Desktop\EmoMA-Net\env\Lib\site-packages\torch\nn\modules\module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\xy2593\Desktop\EmoMA-Net\env\Lib\site-packages\torch\nn\modules\module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\xy2593\Desktop\EmoMA-Net\Usage_v6_Brooklyn\scripts\predict_from_processed.py", line 341, in patched_forward
+    outputs = original_forward(x, *args, **kwargs)
+  File "C:\Users\xy2593\Desktop\EmoMA-Net\Usage_v6_Brooklyn\models\wrist_model_v6_3class.py", line 159, in forward
+    assert feat_dim == 33, f"Expected 33 features, got {feat_dim}"
+           ^^^^^^^^^^^^^^
+AssertionError: Expected 33 features, got 48
+
+2025-03-03 18:58:34 - 
+Processing file: C:\Users\xy2593\Desktop\CUSP-GX-9000 Guided Study\Data\ParticipantData\Participant#0478\rawData_to_csv\P0478_prepared_v6.csv
+2025-03-03 18:58:35 - Loaded processed data from P0478_prepared_v6.csv, shape: (177631, 50)
+2025-03-03 18:58:35 - Creating windows with size 288
+2025-03-03 18:58:35 - Window at index 0 contains NaN values. Filling with forward fill.
+2025-03-03 18:58:35 - Window at index 0 still contains NaN values after filling. Skipping.
+2025-03-03 18:58:35 - Window at index 144 contains NaN values. Filling with forward fill.
+2025-03-03 18:58:35 - Window at index 288 contains NaN values. Filling with forward fill.
+2025-03-03 18:58:35 - Window at index 176976 contains NaN values. Filling with forward fill.
+2025-03-03 18:58:35 - Window at index 177120 contains NaN values. Filling with forward fill.
+2025-03-03 18:58:35 - Window at index 177264 contains NaN values. Filling with forward fill.
+2025-03-03 18:58:35 - Window at index 177264 still contains NaN values after filling. Skipping.
+2025-03-03 18:58:35 - Created 1230 windows
+2025-03-03 18:58:35 - Using 48 features for model input
+2025-03-03 18:58:36 - Prepared data shape: (1230, 288, 48)
+2025-03-03 18:58:36 - Making predictions
+2025-03-03 18:58:36 - Model structure: WristLSTM
+2025-03-03 18:58:36 - Error processing file C:\Users\xy2593\Desktop\CUSP-GX-9000 Guided Study\Data\ParticipantData\Participant#0478\rawData_to_csv\P0478_prepared_v6.csv: Expected 33 features, got 48
+2025-03-03 18:58:36 - Traceback (most recent call last):
+  File "C:\Users\xy2593\Desktop\EmoMA-Net\Usage_v6_Brooklyn\scripts\predict_from_processed.py", line 728, in main
+    predictions = predict(model, X, device)
+  File "C:\Users\xy2593\Desktop\EmoMA-Net\Usage_v6_Brooklyn\scripts\predict_from_processed.py", line 564, in predict
+    first_outputs = model(first_batch)
+  File "C:\Users\xy2593\Desktop\EmoMA-Net\env\Lib\site-packages\torch\nn\modules\module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\xy2593\Desktop\EmoMA-Net\env\Lib\site-packages\torch\nn\modules\module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\xy2593\Desktop\EmoMA-Net\Usage_v6_Brooklyn\scripts\predict_from_processed.py", line 341, in patched_forward
+    outputs = original_forward(x, *args, **kwargs)
+  File "C:\Users\xy2593\Desktop\EmoMA-Net\Usage_v6_Brooklyn\models\wrist_model_v6_3class.py", line 159, in forward
+    assert feat_dim == 33, f"Expected 33 features, got {feat_dim}"
+           ^^^^^^^^^^^^^^
+AssertionError: Expected 33 features, got 48
+
+2025-03-03 18:58:36 - 
+Processing file: C:\Users\xy2593\Desktop\CUSP-GX-9000 Guided Study\Data\ParticipantData\Participant#0874\rawData_to_csv\P0874_prepared_v6.csv
+2025-03-03 18:58:36 - Loaded processed data from P0874_prepared_v6.csv, shape: (167263, 50)
+2025-03-03 18:58:36 - Creating windows with size 288
+2025-03-03 18:58:36 - Window at index 0 contains NaN values. Filling with forward fill.
+2025-03-03 18:58:36 - Window at index 0 still contains NaN values after filling. Skipping.
+2025-03-03 18:58:36 - Window at index 144 contains NaN values. Filling with forward fill.
+2025-03-03 18:58:36 - Window at index 288 contains NaN values. Filling with forward fill.
+2025-03-03 18:58:37 - Window at index 166752 contains NaN values. Filling with forward fill.
+2025-03-03 18:58:37 - Window at index 166896 contains NaN values. Filling with forward fill.
+2025-03-03 18:58:37 - Created 1159 windows
+2025-03-03 18:58:37 - Using 48 features for model input
+2025-03-03 18:58:37 - Prepared data shape: (1159, 288, 48)
+2025-03-03 18:58:37 - Making predictions
+2025-03-03 18:58:37 - Model structure: WristLSTM
+2025-03-03 18:58:37 - Error processing file C:\Users\xy2593\Desktop\CUSP-GX-9000 Guided Study\Data\ParticipantData\Participant#0874\rawData_to_csv\P0874_prepared_v6.csv: Expected 33 features, got 48
+2025-03-03 18:58:37 - Traceback (most recent call last):
+  File "C:\Users\xy2593\Desktop\EmoMA-Net\Usage_v6_Brooklyn\scripts\predict_from_processed.py", line 728, in main
+    predictions = predict(model, X, device)
+  File "C:\Users\xy2593\Desktop\EmoMA-Net\Usage_v6_Brooklyn\scripts\predict_from_processed.py", line 564, in predict
+    first_outputs = model(first_batch)
+  File "C:\Users\xy2593\Desktop\EmoMA-Net\env\Lib\site-packages\torch\nn\modules\module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\xy2593\Desktop\EmoMA-Net\env\Lib\site-packages\torch\nn\modules\module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\xy2593\Desktop\EmoMA-Net\Usage_v6_Brooklyn\scripts\predict_from_processed.py", line 341, in patched_forward
+    outputs = original_forward(x, *args, **kwargs)
+  File "C:\Users\xy2593\Desktop\EmoMA-Net\Usage_v6_Brooklyn\models\wrist_model_v6_3class.py", line 159, in forward
+    assert feat_dim == 33, f"Expected 33 features, got {feat_dim}"
+           ^^^^^^^^^^^^^^
+AssertionError: Expected 33 features, got 48
+
+2025-03-03 18:58:37 - 
+Processing file: C:\Users\xy2593\Desktop\CUSP-GX-9000 Guided Study\Data\ParticipantData\Participant#1086\rawData_to_csv\P1086_prepared_v6.csv
+2025-03-03 18:58:38 - Loaded processed data from P1086_prepared_v6.csv, shape: (173471, 34)
+2025-03-03 18:58:38 - Creating windows with size 288
+2025-03-03 18:58:38 - Created 1203 windows
+2025-03-03 18:58:38 - Using 33 features for model input
+2025-03-03 18:58:38 - Prepared data shape: (1203, 288, 33)
+2025-03-03 18:58:38 - Making predictions
+2025-03-03 18:58:38 - Model structure: WristLSTM
+2025-03-03 18:58:39 - First batch output shape: torch.Size([32, 3])
+2025-03-03 18:58:39 - First batch output range: min=-5.662967681884766, max=-5.66295862197876
+2025-03-03 18:58:39 - Output contains negative values - likely logits
+2025-03-03 18:58:39 - Output has 3 dimensions - matches our 3-class expectation
+2025-03-03 18:58:39 - Raw output example (first instance):
+2025-03-03 18:58:39 - tensor([-5.6630, -5.6630, -5.6630])

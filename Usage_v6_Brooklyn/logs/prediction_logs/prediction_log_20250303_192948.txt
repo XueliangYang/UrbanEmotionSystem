@@ -1,0 +1,173 @@
+2025-03-03 19:29:48 - Using device: cpu
+2025-03-03 19:29:48 - Loading model from: ../models/best_model_v6.pth
+2025-03-03 19:29:48 - Model initialized with:
+2025-03-03 19:29:48 -   - Input size: 33
+2025-03-03 19:29:48 -   - Hidden size: 192
+2025-03-03 19:29:48 -   - Num layers: 2
+2025-03-03 19:29:48 -   - Num heads: 4
+2025-03-03 19:29:48 -   - Num classes: 3
+2025-03-03 19:29:48 - Inspecting model architecture...
+2025-03-03 19:29:48 - Total parameters: 2,041,180
+2025-03-03 19:29:48 - Trainable parameters: 2,041,180
+2025-03-03 19:29:48 - Model has non-standard structure
+2025-03-03 19:29:48 - Model modules:
+2025-03-03 19:29:48 -   - feature_expansion: FeatureExpansion
+2025-03-03 19:29:48 -   - feature_expansion.expand: Sequential
+2025-03-03 19:29:48 -   - feature_expansion.expand.0: Linear [in: 33, out: 165]
+2025-03-03 19:29:48 -   - feature_expansion.expand.1: GELU
+2025-03-03 19:29:48 -   - feature_expansion.expand.2: Dropout
+2025-03-03 19:29:48 -   - feature_expansion.expand.3: Linear [in: 165, out: 33]
+2025-03-03 19:29:48 -   - feature_expansion.expand.4: LayerNorm
+2025-03-03 19:29:48 -   - pos_encoder: PositionalEncoding
+2025-03-03 19:29:48 -   - input_proj: Linear [in: 33, out: 192]
+2025-03-03 19:29:48 -   - lstm: LSTM [input: 192, hidden: 192, layers: 2]
+2025-03-03 19:29:48 -   - lstm_proj: Linear [in: 384, out: 192]
+2025-03-03 19:29:48 -   - attention: MultiHeadAttention
+2025-03-03 19:29:48 -   - attention.q_linear: Linear [in: 192, out: 192]
+2025-03-03 19:29:48 -   - attention.k_linear: Linear [in: 192, out: 192]
+2025-03-03 19:29:48 -   - attention.v_linear: Linear [in: 192, out: 192]
+2025-03-03 19:29:48 -   - attention.dropout: Dropout
+2025-03-03 19:29:48 -   - attention.out: Linear [in: 192, out: 192]
+2025-03-03 19:29:48 -   - feature_enhancement: EnhancedFeatureBlock
+2025-03-03 19:29:48 -   - feature_enhancement.linear1: Linear [in: 192, out: 768]
+2025-03-03 19:29:48 -   - feature_enhancement.linear2: Linear [in: 768, out: 192]
+2025-03-03 19:29:48 -   - feature_enhancement.norm1: LayerNorm
+2025-03-03 19:29:48 -   - feature_enhancement.norm2: LayerNorm
+2025-03-03 19:29:48 -   - feature_enhancement.dropout: Dropout
+2025-03-03 19:29:48 -   - attention_norm: LayerNorm
+2025-03-03 19:29:48 -   - fc: Sequential
+2025-03-03 19:29:48 -   - fc.0: Linear [in: 192, out: 96]
+2025-03-03 19:29:48 -   - fc.1: LayerNorm
+2025-03-03 19:29:48 -   - fc.2: GELU
+2025-03-03 19:29:48 -   - fc.3: Dropout
+2025-03-03 19:29:48 -   - fc.4: Linear [in: 96, out: 48]
+2025-03-03 19:29:48 -   - fc.5: LayerNorm
+2025-03-03 19:29:48 -   - fc.6: GELU
+2025-03-03 19:29:48 -   - fc.7: Dropout
+2025-03-03 19:29:48 -   - fc.8: Linear [in: 48, out: 3]
+2025-03-03 19:29:48 - Potential output layer: fc.8 (output dim: 3)
+2025-03-03 19:29:48 - Testing model predictions on random data...
+2025-03-03 19:29:48 - Test output shape: torch.Size([4, 288, 3])
+2025-03-03 19:29:48 - Test output range: min=-5.66306734085083, max=-5.662787437438965
+2025-03-03 19:29:48 - Output shape has 3 dimensions, expected 2
+2025-03-03 19:29:48 - Model output format is not as expected for classification
+2025-03-03 19:29:48 - Model prediction test failed. Attempting to patch model output.
+2025-03-03 19:29:48 - Patching model to ensure classification outputs
+2025-03-03 19:29:48 - Model output patched successfully
+2025-03-03 19:29:48 - Testing model predictions on random data...
+2025-03-03 19:29:48 - Test output shape: torch.Size([4, 3])
+2025-03-03 19:29:48 - Test output range: min=-5.662981033325195, max=-5.662928581237793
+2025-03-03 19:29:48 - Model produces expected 3-class classification outputs
+2025-03-03 19:29:48 - Probabilities sum to ~1: tensor([1., 1., 1., 1.])
+2025-03-03 19:29:48 - Predicted classes: tensor([1, 1, 1, 2])
+2025-03-03 19:29:48 - Prediction values are within expected range (0-2)
+2025-03-03 19:29:48 - Model patching successful - outputs now in correct format
+2025-03-03 19:29:48 - Output layer dimension (from Sequential): 3
+2025-03-03 19:29:48 - Model loaded successfully
+2025-03-03 19:29:48 - Initialized prediction with model path: ../models/best_model_v6.pth
+2025-03-03 19:29:48 - Found 31 prepared_v6 files by searching directories
+2025-03-03 19:29:49 - Loaded processed data from P0150_prepared_v6.csv, shape: (180738, 50)
+2025-03-03 19:29:49 - Unexpected number of columns in P0150_prepared_v6.csv: Expected 34, got 50
+2025-03-03 19:29:49 - Column names: ['datetime', 'ACC_x', 'ACC_y', 'ACC_z', 'EDA', 'EDA_phasic', 'EDA_tonic', 'TEMP', 'BVP', 'subject', 'EDA_mean', 'EDA_std', 'EDA_min', 'EDA_max', 'EDA_slope', 'TEMP_mean', 'TEMP_std', 'TEMP_min', 'TEMP_max', 'TEMP_slope', 'BVP_mean', 'BVP_std', 'BVP_min', 'BVP_max', 'BVP_slope', 'EDA_phasic_mean', 'EDA_phasic_std', 'EDA_phasic_min', 'EDA_phasic_max', 'EDA_phasic_slope', 'EDA_tonic_mean', 'EDA_tonic_std', 'EDA_tonic_min', 'EDA_tonic_max', 'EDA_tonic_slope', 'ACC_x_mean', 'ACC_x_std', 'ACC_x_min', 'ACC_x_max', 'ACC_x_slope', 'ACC_y_mean', 'ACC_y_std', 'ACC_y_min', 'ACC_y_max', 'ACC_y_slope', 'ACC_z_mean', 'ACC_z_std', 'ACC_z_min', 'ACC_z_max', 'ACC_z_slope']
+2025-03-03 19:29:49 - Creating windows with size 288
+2025-03-03 19:29:49 - Window at index 0 contains NaN values. Filling with forward fill.
+2025-03-03 19:29:49 - Window at index 0 still contains NaN values after filling. Skipping.
+2025-03-03 19:29:49 - Window at index 144 contains NaN values. Filling with forward fill.
+2025-03-03 19:29:49 - Window at index 288 contains NaN values. Filling with forward fill.
+2025-03-03 19:29:49 - Window at index 180144 contains NaN values. Filling with forward fill.
+2025-03-03 19:29:49 - Window at index 180288 contains NaN values. Filling with forward fill.
+2025-03-03 19:29:49 - Window at index 180432 contains NaN values. Filling with forward fill.
+2025-03-03 19:29:49 - Window at index 180432 still contains NaN values after filling. Skipping.
+2025-03-03 19:29:49 - Created 1252 windows
+2025-03-03 19:29:49 - Using 48 features for model input
+2025-03-03 19:29:50 - Prepared data shape: (1252, 288, 48)
+2025-03-03 19:29:50 - Making predictions
+2025-03-03 19:29:50 - Model structure: WristLSTM
+2025-03-03 19:29:50 - Error processing file C:\Users\xy2593\Desktop\CUSP-GX-9000 Guided Study\Data\ParticipantData\Participant#0150\rawData_to_csv_10Jul\P0150_prepared_v6.csv: Expected 33 features, got 48
+2025-03-03 19:29:50 - Loaded processed data from P0431_prepared_v6.csv, shape: (48802, 50)
+2025-03-03 19:29:50 - Unexpected number of columns in P0431_prepared_v6.csv: Expected 34, got 50
+2025-03-03 19:29:50 - Column names: ['datetime', 'ACC_x', 'ACC_y', 'ACC_z', 'EDA', 'EDA_phasic', 'EDA_tonic', 'TEMP', 'BVP', 'subject', 'EDA_mean', 'EDA_std', 'EDA_min', 'EDA_max', 'EDA_slope', 'TEMP_mean', 'TEMP_std', 'TEMP_min', 'TEMP_max', 'TEMP_slope', 'BVP_mean', 'BVP_std', 'BVP_min', 'BVP_max', 'BVP_slope', 'EDA_phasic_mean', 'EDA_phasic_std', 'EDA_phasic_min', 'EDA_phasic_max', 'EDA_phasic_slope', 'EDA_tonic_mean', 'EDA_tonic_std', 'EDA_tonic_min', 'EDA_tonic_max', 'EDA_tonic_slope', 'ACC_x_mean', 'ACC_x_std', 'ACC_x_min', 'ACC_x_max', 'ACC_x_slope', 'ACC_y_mean', 'ACC_y_std', 'ACC_y_min', 'ACC_y_max', 'ACC_y_slope', 'ACC_z_mean', 'ACC_z_std', 'ACC_z_min', 'ACC_z_max', 'ACC_z_slope']
+2025-03-03 19:29:50 - Creating windows with size 288
+2025-03-03 19:29:50 - Window at index 0 contains NaN values. Filling with forward fill.
+2025-03-03 19:29:50 - Window at index 0 still contains NaN values after filling. Skipping.
+2025-03-03 19:29:50 - Window at index 144 contains NaN values. Filling with forward fill.
+2025-03-03 19:29:50 - Window at index 288 contains NaN values. Filling with forward fill.
+2025-03-03 19:29:50 - Window at index 47808 contains NaN values. Filling with forward fill.
+2025-03-03 19:29:50 - Window at index 47952 contains NaN values. Filling with forward fill.
+2025-03-03 19:29:50 - Window at index 48096 contains NaN values. Filling with forward fill.
+2025-03-03 19:29:50 - Window at index 48096 still contains NaN values after filling. Skipping.
+2025-03-03 19:29:50 - Window at index 48240 contains NaN values. Filling with forward fill.
+2025-03-03 19:29:50 - Window at index 48240 still contains NaN values after filling. Skipping.
+2025-03-03 19:29:50 - Window at index 48384 contains NaN values. Filling with forward fill.
+2025-03-03 19:29:50 - Window at index 48384 still contains NaN values after filling. Skipping.
+2025-03-03 19:29:50 - Created 333 windows
+2025-03-03 19:29:50 - Using 48 features for model input
+2025-03-03 19:29:50 - Prepared data shape: (333, 288, 48)
+2025-03-03 19:29:50 - Making predictions
+2025-03-03 19:29:50 - Model structure: WristLSTM
+2025-03-03 19:29:50 - Error processing file C:\Users\xy2593\Desktop\CUSP-GX-9000 Guided Study\Data\ParticipantData\Participant#0431\rawData_to_csv\P0431_prepared_v6.csv: Expected 33 features, got 48
+2025-03-03 19:29:51 - Loaded processed data from P0478_prepared_v6.csv, shape: (177631, 50)
+2025-03-03 19:29:51 - Unexpected number of columns in P0478_prepared_v6.csv: Expected 34, got 50
+2025-03-03 19:29:51 - Column names: ['datetime', 'ACC_x', 'ACC_y', 'ACC_z', 'EDA', 'EDA_phasic', 'EDA_tonic', 'TEMP', 'BVP', 'subject', 'EDA_mean', 'EDA_std', 'EDA_min', 'EDA_max', 'EDA_slope', 'TEMP_mean', 'TEMP_std', 'TEMP_min', 'TEMP_max', 'TEMP_slope', 'BVP_mean', 'BVP_std', 'BVP_min', 'BVP_max', 'BVP_slope', 'EDA_phasic_mean', 'EDA_phasic_std', 'EDA_phasic_min', 'EDA_phasic_max', 'EDA_phasic_slope', 'EDA_tonic_mean', 'EDA_tonic_std', 'EDA_tonic_min', 'EDA_tonic_max', 'EDA_tonic_slope', 'ACC_x_mean', 'ACC_x_std', 'ACC_x_min', 'ACC_x_max', 'ACC_x_slope', 'ACC_y_mean', 'ACC_y_std', 'ACC_y_min', 'ACC_y_max', 'ACC_y_slope', 'ACC_z_mean', 'ACC_z_std', 'ACC_z_min', 'ACC_z_max', 'ACC_z_slope']
+2025-03-03 19:29:51 - Creating windows with size 288
+2025-03-03 19:29:51 - Window at index 0 contains NaN values. Filling with forward fill.
+2025-03-03 19:29:51 - Window at index 0 still contains NaN values after filling. Skipping.
+2025-03-03 19:29:51 - Window at index 144 contains NaN values. Filling with forward fill.
+2025-03-03 19:29:51 - Window at index 288 contains NaN values. Filling with forward fill.
+2025-03-03 19:29:51 - Window at index 176976 contains NaN values. Filling with forward fill.
+2025-03-03 19:29:51 - Window at index 177120 contains NaN values. Filling with forward fill.
+2025-03-03 19:29:51 - Window at index 177264 contains NaN values. Filling with forward fill.
+2025-03-03 19:29:51 - Window at index 177264 still contains NaN values after filling. Skipping.
+2025-03-03 19:29:51 - Created 1230 windows
+2025-03-03 19:29:51 - Using 48 features for model input
+2025-03-03 19:29:52 - Prepared data shape: (1230, 288, 48)
+2025-03-03 19:29:52 - Making predictions
+2025-03-03 19:29:52 - Model structure: WristLSTM
+2025-03-03 19:29:52 - Error processing file C:\Users\xy2593\Desktop\CUSP-GX-9000 Guided Study\Data\ParticipantData\Participant#0478\rawData_to_csv\P0478_prepared_v6.csv: Expected 33 features, got 48
+2025-03-03 19:29:53 - Loaded processed data from P0874_prepared_v6.csv, shape: (167263, 50)
+2025-03-03 19:29:53 - Unexpected number of columns in P0874_prepared_v6.csv: Expected 34, got 50
+2025-03-03 19:29:53 - Column names: ['datetime', 'ACC_x', 'ACC_y', 'ACC_z', 'EDA', 'EDA_phasic', 'EDA_tonic', 'TEMP', 'BVP', 'subject', 'EDA_mean', 'EDA_std', 'EDA_min', 'EDA_max', 'EDA_slope', 'TEMP_mean', 'TEMP_std', 'TEMP_min', 'TEMP_max', 'TEMP_slope', 'BVP_mean', 'BVP_std', 'BVP_min', 'BVP_max', 'BVP_slope', 'EDA_phasic_mean', 'EDA_phasic_std', 'EDA_phasic_min', 'EDA_phasic_max', 'EDA_phasic_slope', 'EDA_tonic_mean', 'EDA_tonic_std', 'EDA_tonic_min', 'EDA_tonic_max', 'EDA_tonic_slope', 'ACC_x_mean', 'ACC_x_std', 'ACC_x_min', 'ACC_x_max', 'ACC_x_slope', 'ACC_y_mean', 'ACC_y_std', 'ACC_y_min', 'ACC_y_max', 'ACC_y_slope', 'ACC_z_mean', 'ACC_z_std', 'ACC_z_min', 'ACC_z_max', 'ACC_z_slope']
+2025-03-03 19:29:53 - Creating windows with size 288
+2025-03-03 19:29:53 - Window at index 0 contains NaN values. Filling with forward fill.
+2025-03-03 19:29:53 - Window at index 0 still contains NaN values after filling. Skipping.
+2025-03-03 19:29:53 - Window at index 144 contains NaN values. Filling with forward fill.
+2025-03-03 19:29:53 - Window at index 288 contains NaN values. Filling with forward fill.
+2025-03-03 19:29:53 - Window at index 166752 contains NaN values. Filling with forward fill.
+2025-03-03 19:29:53 - Window at index 166896 contains NaN values. Filling with forward fill.
+2025-03-03 19:29:53 - Created 1159 windows
+2025-03-03 19:29:53 - Using 48 features for model input
+2025-03-03 19:29:53 - Prepared data shape: (1159, 288, 48)
+2025-03-03 19:29:53 - Making predictions
+2025-03-03 19:29:53 - Model structure: WristLSTM
+2025-03-03 19:29:53 - Error processing file C:\Users\xy2593\Desktop\CUSP-GX-9000 Guided Study\Data\ParticipantData\Participant#0874\rawData_to_csv\P0874_prepared_v6.csv: Expected 33 features, got 48
+2025-03-03 19:29:54 - Loaded processed data from P1086_prepared_v6.csv, shape: (173471, 34)
+2025-03-03 19:29:54 - Creating windows with size 288
+2025-03-03 19:29:54 - Created 1203 windows
+2025-03-03 19:29:54 - Using 33 features for model input
+2025-03-03 19:29:54 - Prepared data shape: (1203, 288, 33)
+2025-03-03 19:29:54 - Making predictions
+2025-03-03 19:29:54 - Model structure: WristLSTM
+2025-03-03 19:29:55 - First batch output shape: torch.Size([32, 3])
+2025-03-03 19:29:55 - First batch output range: min=-5.662967681884766, max=-5.66295862197876
+2025-03-03 19:29:55 - Output contains negative values - likely logits
+2025-03-03 19:29:55 - Output has 3 dimensions - matches our 3-class expectation
+2025-03-03 19:29:55 - Raw output example (first instance):
+2025-03-03 19:29:55 - tensor([-5.6630, -5.6630, -5.6630])
+2025-03-03 19:30:00 - Prediction distribution: {0: 491, 2: 454, 1: 258}
+2025-03-03 19:30:00 - Made 1203 predictions
+2025-03-03 19:30:00 - Error processing file C:\Users\xy2593\Desktop\CUSP-GX-9000 Guided Study\Data\ParticipantData\Participant#1086\rawData_to_csv\P1086_prepared_v6.csv: All arrays must be of the same length
+2025-03-03 19:30:00 - Loaded processed data from P1120_prepared_v6.csv, shape: (163777, 34)
+2025-03-03 19:30:00 - Creating windows with size 288
+2025-03-03 19:30:01 - Window at index 163296 contains NaN values. Filling with forward fill.
+2025-03-03 19:30:01 - Window at index 163440 contains NaN values. Filling with forward fill.
+2025-03-03 19:30:01 - Created 1136 windows
+2025-03-03 19:30:01 - Using 33 features for model input
+2025-03-03 19:30:01 - Prepared data shape: (1136, 288, 33)
+2025-03-03 19:30:01 - Making predictions
+2025-03-03 19:30:01 - Model structure: WristLSTM
+2025-03-03 19:30:01 - First batch output shape: torch.Size([32, 3])
+2025-03-03 19:30:01 - First batch output range: min=-5.662966728210449, max=-5.6629557609558105
+2025-03-03 19:30:01 - Output contains negative values - likely logits
+2025-03-03 19:30:01 - Output has 3 dimensions - matches our 3-class expectation
+2025-03-03 19:30:01 - Raw output example (first instance):
+2025-03-03 19:30:01 - tensor([-5.6630, -5.6630, -5.6630])

@@ -1,0 +1,551 @@
+2025-03-03 16:18:01 - Using device: cpu
+2025-03-03 16:18:01 - Loading model from: ../models/best_model_v6.pth
+2025-03-03 16:18:01 - Model initialized with:
+2025-03-03 16:18:01 -   - Input size: 33
+2025-03-03 16:18:01 -   - Hidden size: 192
+2025-03-03 16:18:01 -   - Num layers: 2
+2025-03-03 16:18:01 -   - Num heads: 4
+2025-03-03 16:18:01 -   - Num classes: 3
+2025-03-03 16:18:01 - Inspecting model architecture...
+2025-03-03 16:18:01 - Total parameters: 2,041,180
+2025-03-03 16:18:01 - Trainable parameters: 2,041,180
+2025-03-03 16:18:01 - Model has non-standard structure
+2025-03-03 16:18:01 - Model modules:
+2025-03-03 16:18:01 -   - feature_expansion: FeatureExpansion
+2025-03-03 16:18:01 -   - feature_expansion.expand: Sequential
+2025-03-03 16:18:01 -   - feature_expansion.expand.0: Linear [in: 33, out: 165]
+2025-03-03 16:18:01 -   - feature_expansion.expand.1: GELU
+2025-03-03 16:18:01 -   - feature_expansion.expand.2: Dropout
+2025-03-03 16:18:01 -   - feature_expansion.expand.3: Linear [in: 165, out: 33]
+2025-03-03 16:18:01 -   - feature_expansion.expand.4: LayerNorm
+2025-03-03 16:18:01 -   - pos_encoder: PositionalEncoding
+2025-03-03 16:18:01 -   - input_proj: Linear [in: 33, out: 192]
+2025-03-03 16:18:01 -   - lstm: LSTM [input: 192, hidden: 192, layers: 2]
+2025-03-03 16:18:01 -   - lstm_proj: Linear [in: 384, out: 192]
+2025-03-03 16:18:01 -   - attention: MultiHeadAttention
+2025-03-03 16:18:01 -   - attention.q_linear: Linear [in: 192, out: 192]
+2025-03-03 16:18:01 -   - attention.k_linear: Linear [in: 192, out: 192]
+2025-03-03 16:18:01 -   - attention.v_linear: Linear [in: 192, out: 192]
+2025-03-03 16:18:01 -   - attention.dropout: Dropout
+2025-03-03 16:18:01 -   - attention.out: Linear [in: 192, out: 192]
+2025-03-03 16:18:01 -   - feature_enhancement: EnhancedFeatureBlock
+2025-03-03 16:18:01 -   - feature_enhancement.linear1: Linear [in: 192, out: 768]
+2025-03-03 16:18:01 -   - feature_enhancement.linear2: Linear [in: 768, out: 192]
+2025-03-03 16:18:01 -   - feature_enhancement.norm1: LayerNorm
+2025-03-03 16:18:01 -   - feature_enhancement.norm2: LayerNorm
+2025-03-03 16:18:01 -   - feature_enhancement.dropout: Dropout
+2025-03-03 16:18:01 -   - attention_norm: LayerNorm
+2025-03-03 16:18:01 -   - fc: Sequential
+2025-03-03 16:18:01 -   - fc.0: Linear [in: 192, out: 96]
+2025-03-03 16:18:01 -   - fc.1: LayerNorm
+2025-03-03 16:18:01 -   - fc.2: GELU
+2025-03-03 16:18:01 -   - fc.3: Dropout
+2025-03-03 16:18:01 -   - fc.4: Linear [in: 96, out: 48]
+2025-03-03 16:18:01 -   - fc.5: LayerNorm
+2025-03-03 16:18:01 -   - fc.6: GELU
+2025-03-03 16:18:01 -   - fc.7: Dropout
+2025-03-03 16:18:01 -   - fc.8: Linear [in: 48, out: 3]
+2025-03-03 16:18:01 - Potential output layer: fc.8 (output dim: 3)
+2025-03-03 16:18:01 - Testing model predictions on random data...
+2025-03-03 16:18:01 - Test output shape: torch.Size([4, 288, 3])
+2025-03-03 16:18:01 - Test output range: min=-5.663027763366699, max=-5.66285514831543
+2025-03-03 16:18:01 - Output shape has 3 dimensions, expected 2
+2025-03-03 16:18:01 - Model output format is not as expected for classification
+2025-03-03 16:18:01 - Model prediction test failed. Attempting to patch model output.
+2025-03-03 16:18:01 - Patching model to ensure classification outputs
+2025-03-03 16:18:01 - Model output patched successfully
+2025-03-03 16:18:01 - Testing model predictions on random data...
+2025-03-03 16:18:01 - Test output shape: torch.Size([4, 3])
+2025-03-03 16:18:01 - Test output range: min=-5.662973403930664, max=-5.662939548492432
+2025-03-03 16:18:01 - Model produces expected 3-class classification outputs
+2025-03-03 16:18:01 - Probabilities sum to ~1: tensor([1., 1., 1., 1.])
+2025-03-03 16:18:01 - Predicted classes: tensor([2, 1, 1, 2])
+2025-03-03 16:18:01 - Prediction values are within expected range (0-2)
+2025-03-03 16:18:01 - Model patching successful - outputs now in correct format
+2025-03-03 16:18:01 - Output layer dimension (from Sequential): 3
+2025-03-03 16:18:01 - Model loaded successfully
+2025-03-03 16:18:01 - Initialized prediction with model path: ../models/best_model_v6.pth
+2025-03-03 16:18:01 - Found 31 processed files by searching directories
+2025-03-03 16:18:02 - Loaded processed data from P0150_processed.csv, shape: (180738, 51)
+2025-03-03 16:18:02 - Creating windows with size 288
+2025-03-03 16:18:02 - Window at index 0 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:02 - Window at index 0 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:02 - Window at index 144 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:02 - Window at index 288 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:02 - Window at index 180144 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:02 - Window at index 180288 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:02 - Window at index 180432 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:02 - Window at index 180432 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:02 - Created 1252 windows
+2025-03-03 16:18:02 - Using 49 features for model input
+2025-03-03 16:18:03 - Prepared data shape: (1252, 288, 49)
+2025-03-03 16:18:03 - Making predictions
+2025-03-03 16:18:03 - Model structure: WristLSTM
+2025-03-03 16:18:03 - Error processing file ../data\P0150_processed.csv: Expected 33 features, got 49
+2025-03-03 16:18:03 - Loaded processed data from P0431_processed.csv, shape: (48802, 51)
+2025-03-03 16:18:03 - Creating windows with size 288
+2025-03-03 16:18:03 - Window at index 0 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:03 - Window at index 0 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:03 - Window at index 144 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:03 - Window at index 288 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:03 - Window at index 47808 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:03 - Window at index 47952 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:03 - Window at index 48096 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:03 - Window at index 48096 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:03 - Window at index 48240 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:03 - Window at index 48240 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:03 - Window at index 48384 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:03 - Window at index 48384 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:03 - Created 333 windows
+2025-03-03 16:18:03 - Using 49 features for model input
+2025-03-03 16:18:03 - Prepared data shape: (333, 288, 49)
+2025-03-03 16:18:03 - Making predictions
+2025-03-03 16:18:03 - Model structure: WristLSTM
+2025-03-03 16:18:03 - Error processing file ../data\P0431_processed.csv: Expected 33 features, got 49
+2025-03-03 16:18:04 - Loaded processed data from P0478_processed.csv, shape: (177631, 51)
+2025-03-03 16:18:04 - Creating windows with size 288
+2025-03-03 16:18:04 - Window at index 0 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:04 - Window at index 0 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:04 - Window at index 144 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:04 - Window at index 288 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:04 - Window at index 176976 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:04 - Window at index 177120 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:04 - Window at index 177264 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:04 - Window at index 177264 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:04 - Created 1230 windows
+2025-03-03 16:18:04 - Using 49 features for model input
+2025-03-03 16:18:05 - Prepared data shape: (1230, 288, 49)
+2025-03-03 16:18:05 - Making predictions
+2025-03-03 16:18:05 - Model structure: WristLSTM
+2025-03-03 16:18:05 - Error processing file ../data\P0478_processed.csv: Expected 33 features, got 49
+2025-03-03 16:18:06 - Loaded processed data from P0874_processed.csv, shape: (167263, 51)
+2025-03-03 16:18:06 - Creating windows with size 288
+2025-03-03 16:18:06 - Window at index 0 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:06 - Window at index 0 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:06 - Window at index 144 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:06 - Window at index 288 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:06 - Window at index 166752 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:06 - Window at index 166896 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:06 - Created 1159 windows
+2025-03-03 16:18:06 - Using 49 features for model input
+2025-03-03 16:18:07 - Prepared data shape: (1159, 288, 49)
+2025-03-03 16:18:07 - Making predictions
+2025-03-03 16:18:07 - Model structure: WristLSTM
+2025-03-03 16:18:07 - Error processing file ../data\P0874_processed.csv: Expected 33 features, got 49
+2025-03-03 16:18:07 - Loaded processed data from P1086_processed.csv, shape: (173471, 51)
+2025-03-03 16:18:07 - Creating windows with size 288
+2025-03-03 16:18:07 - Window at index 0 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:07 - Window at index 0 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:07 - Window at index 144 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:07 - Window at index 288 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:08 - Window at index 172944 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:08 - Window at index 173088 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:08 - Created 1202 windows
+2025-03-03 16:18:08 - Using 49 features for model input
+2025-03-03 16:18:08 - Prepared data shape: (1202, 288, 49)
+2025-03-03 16:18:08 - Making predictions
+2025-03-03 16:18:08 - Model structure: WristLSTM
+2025-03-03 16:18:08 - Error processing file ../data\P1086_processed.csv: Expected 33 features, got 49
+2025-03-03 16:18:09 - Loaded processed data from P1120_processed.csv, shape: (163777, 51)
+2025-03-03 16:18:09 - Creating windows with size 288
+2025-03-03 16:18:09 - Window at index 0 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:09 - Window at index 0 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:09 - Window at index 144 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:09 - Window at index 288 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:09 - Window at index 163152 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:09 - Window at index 163296 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:09 - Window at index 163440 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:09 - Window at index 163440 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:09 - Created 1134 windows
+2025-03-03 16:18:09 - Using 49 features for model input
+2025-03-03 16:18:10 - Prepared data shape: (1134, 288, 49)
+2025-03-03 16:18:10 - Making predictions
+2025-03-03 16:18:10 - Model structure: WristLSTM
+2025-03-03 16:18:10 - Error processing file ../data\P1120_processed.csv: Expected 33 features, got 49
+2025-03-03 16:18:11 - Loaded processed data from P1335_processed.csv, shape: (191071, 51)
+2025-03-03 16:18:11 - Creating windows with size 288
+2025-03-03 16:18:11 - Window at index 0 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:11 - Window at index 0 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:11 - Window at index 144 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:11 - Window at index 288 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:11 - Window at index 190512 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:11 - Window at index 190656 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:11 - Created 1324 windows
+2025-03-03 16:18:11 - Using 49 features for model input
+2025-03-03 16:18:12 - Prepared data shape: (1324, 288, 49)
+2025-03-03 16:18:12 - Making predictions
+2025-03-03 16:18:12 - Model structure: WristLSTM
+2025-03-03 16:18:12 - Error processing file ../data\P1335_processed.csv: Expected 33 features, got 49
+2025-03-03 16:18:12 - Loaded processed data from P1704_processed.csv, shape: (175071, 51)
+2025-03-03 16:18:12 - Creating windows with size 288
+2025-03-03 16:18:12 - Window at index 0 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:12 - Window at index 0 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:12 - Window at index 144 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:12 - Window at index 288 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:13 - Window at index 174528 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:13 - Window at index 174672 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:13 - Created 1213 windows
+2025-03-03 16:18:13 - Using 49 features for model input
+2025-03-03 16:18:13 - Prepared data shape: (1213, 288, 49)
+2025-03-03 16:18:13 - Making predictions
+2025-03-03 16:18:13 - Model structure: WristLSTM
+2025-03-03 16:18:13 - Error processing file ../data\P1704_processed.csv: Expected 33 features, got 49
+2025-03-03 16:18:14 - Loaded processed data from P2340_processed.csv, shape: (139999, 51)
+2025-03-03 16:18:14 - Creating windows with size 288
+2025-03-03 16:18:14 - Window at index 0 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:14 - Window at index 0 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:14 - Window at index 144 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:14 - Window at index 288 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:14 - Window at index 139392 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:14 - Window at index 139536 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:14 - Window at index 139680 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:14 - Window at index 139680 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:14 - Created 969 windows
+2025-03-03 16:18:14 - Using 49 features for model input
+2025-03-03 16:18:15 - Prepared data shape: (969, 288, 49)
+2025-03-03 16:18:15 - Making predictions
+2025-03-03 16:18:15 - Model structure: WristLSTM
+2025-03-03 16:18:15 - Error processing file ../data\P2340_processed.csv: Expected 33 features, got 49
+2025-03-03 16:18:15 - Loaded processed data from P2872_processed.csv, shape: (195903, 51)
+2025-03-03 16:18:15 - Creating windows with size 288
+2025-03-03 16:18:15 - Window at index 0 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:15 - Window at index 0 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:15 - Window at index 144 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:15 - Window at index 288 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:16 - Window at index 195264 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:16 - Window at index 195408 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:16 - Window at index 195552 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:16 - Window at index 195552 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:16 - Created 1357 windows
+2025-03-03 16:18:16 - Using 49 features for model input
+2025-03-03 16:18:16 - Prepared data shape: (1357, 288, 49)
+2025-03-03 16:18:16 - Making predictions
+2025-03-03 16:18:16 - Model structure: WristLSTM
+2025-03-03 16:18:16 - Error processing file ../data\P2872_processed.csv: Expected 33 features, got 49
+2025-03-03 16:18:17 - Loaded processed data from P3802_processed.csv, shape: (180606, 51)
+2025-03-03 16:18:17 - Creating windows with size 288
+2025-03-03 16:18:17 - Window at index 0 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:17 - Window at index 0 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:17 - Window at index 144 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:17 - Window at index 288 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:18 - Window at index 180144 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:18 - Window at index 180288 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:18 - Created 1252 windows
+2025-03-03 16:18:18 - Using 49 features for model input
+2025-03-03 16:18:18 - Prepared data shape: (1252, 288, 49)
+2025-03-03 16:18:18 - Making predictions
+2025-03-03 16:18:18 - Model structure: WristLSTM
+2025-03-03 16:18:18 - Error processing file ../data\P3802_processed.csv: Expected 33 features, got 49
+2025-03-03 16:18:19 - Loaded processed data from P3900_processed.csv, shape: (181377, 51)
+2025-03-03 16:18:19 - Creating windows with size 288
+2025-03-03 16:18:19 - Window at index 0 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:19 - Window at index 0 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:19 - Window at index 144 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:19 - Window at index 288 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:19 - Window at index 180720 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:19 - Window at index 180864 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:19 - Window at index 181008 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:19 - Window at index 181008 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:19 - Created 1256 windows
+2025-03-03 16:18:19 - Using 49 features for model input
+2025-03-03 16:18:20 - Prepared data shape: (1256, 288, 49)
+2025-03-03 16:18:20 - Making predictions
+2025-03-03 16:18:20 - Model structure: WristLSTM
+2025-03-03 16:18:20 - Error processing file ../data\P3900_processed.csv: Expected 33 features, got 49
+2025-03-03 16:18:20 - Loaded processed data from P4259_processed.csv, shape: (175007, 51)
+2025-03-03 16:18:20 - Creating windows with size 288
+2025-03-03 16:18:20 - Window at index 0 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:20 - Window at index 0 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:20 - Window at index 144 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:20 - Window at index 288 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:21 - Window at index 174384 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:21 - Window at index 174528 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:21 - Window at index 174672 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:21 - Window at index 174672 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:21 - Created 1212 windows
+2025-03-03 16:18:21 - Using 49 features for model input
+2025-03-03 16:18:21 - Prepared data shape: (1212, 288, 49)
+2025-03-03 16:18:21 - Making predictions
+2025-03-03 16:18:21 - Model structure: WristLSTM
+2025-03-03 16:18:21 - Error processing file ../data\P4259_processed.csv: Expected 33 features, got 49
+2025-03-03 16:18:22 - Loaded processed data from P5109_processed.csv, shape: (156031, 51)
+2025-03-03 16:18:22 - Creating windows with size 288
+2025-03-03 16:18:22 - Window at index 0 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:22 - Window at index 0 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:22 - Window at index 144 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:22 - Window at index 288 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:22 - Window at index 155520 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:22 - Window at index 155664 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:22 - Created 1081 windows
+2025-03-03 16:18:22 - Using 49 features for model input
+2025-03-03 16:18:23 - Prepared data shape: (1081, 288, 49)
+2025-03-03 16:18:23 - Making predictions
+2025-03-03 16:18:23 - Model structure: WristLSTM
+2025-03-03 16:18:23 - Error processing file ../data\P5109_processed.csv: Expected 33 features, got 49
+2025-03-03 16:18:24 - Loaded processed data from P5321_processed.csv, shape: (161055, 51)
+2025-03-03 16:18:24 - Creating windows with size 288
+2025-03-03 16:18:24 - Window at index 0 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:24 - Window at index 0 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:24 - Window at index 144 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:24 - Window at index 288 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:24 - Window at index 160416 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:24 - Window at index 160560 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:24 - Window at index 160704 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:24 - Window at index 160704 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:24 - Created 1115 windows
+2025-03-03 16:18:24 - Using 49 features for model input
+2025-03-03 16:18:24 - Prepared data shape: (1115, 288, 49)
+2025-03-03 16:18:24 - Making predictions
+2025-03-03 16:18:24 - Model structure: WristLSTM
+2025-03-03 16:18:24 - Error processing file ../data\P5321_processed.csv: Expected 33 features, got 49
+2025-03-03 16:18:25 - Loaded processed data from P5509_processed.csv, shape: (174051, 51)
+2025-03-03 16:18:25 - Creating windows with size 288
+2025-03-03 16:18:25 - Window at index 0 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:25 - Window at index 0 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:25 - Window at index 144 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:25 - Window at index 288 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:25 - Window at index 173232 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:25 - Window at index 173376 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:25 - Window at index 173520 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:25 - Window at index 173520 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:25 - Window at index 173664 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:25 - Window at index 173664 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:25 - Created 1204 windows
+2025-03-03 16:18:25 - Using 49 features for model input
+2025-03-03 16:18:26 - Prepared data shape: (1204, 288, 49)
+2025-03-03 16:18:26 - Making predictions
+2025-03-03 16:18:26 - Model structure: WristLSTM
+2025-03-03 16:18:26 - Error processing file ../data\P5509_processed.csv: Expected 33 features, got 49
+2025-03-03 16:18:27 - Loaded processed data from P6025_processed.csv, shape: (168641, 51)
+2025-03-03 16:18:27 - Creating windows with size 288
+2025-03-03 16:18:27 - Window at index 0 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:27 - Window at index 0 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:27 - Window at index 144 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:27 - Window at index 288 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:27 - Window at index 168048 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:27 - Window at index 168192 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:27 - Window at index 168336 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:27 - Window at index 168336 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:27 - Created 1168 windows
+2025-03-03 16:18:27 - Using 49 features for model input
+2025-03-03 16:18:27 - Prepared data shape: (1168, 288, 49)
+2025-03-03 16:18:27 - Making predictions
+2025-03-03 16:18:27 - Model structure: WristLSTM
+2025-03-03 16:18:27 - Error processing file ../data\P6025_processed.csv: Expected 33 features, got 49
+2025-03-03 16:18:28 - Loaded processed data from P6121_processed.csv, shape: (161855, 51)
+2025-03-03 16:18:28 - Creating windows with size 288
+2025-03-03 16:18:28 - Window at index 0 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:28 - Window at index 0 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:28 - Window at index 144 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:28 - Window at index 288 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:28 - Window at index 161280 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:28 - Window at index 161424 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:28 - Created 1121 windows
+2025-03-03 16:18:28 - Using 49 features for model input
+2025-03-03 16:18:29 - Prepared data shape: (1121, 288, 49)
+2025-03-03 16:18:29 - Making predictions
+2025-03-03 16:18:29 - Model structure: WristLSTM
+2025-03-03 16:18:29 - Error processing file ../data\P6121_processed.csv: Expected 33 features, got 49
+2025-03-03 16:18:30 - Loaded processed data from P6132_processed.csv, shape: (182945, 51)
+2025-03-03 16:18:30 - Creating windows with size 288
+2025-03-03 16:18:30 - Window at index 0 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:30 - Window at index 0 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:30 - Window at index 144 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:30 - Window at index 288 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:30 - Window at index 182304 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:30 - Window at index 182448 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:30 - Window at index 182592 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:30 - Window at index 182592 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:30 - Created 1267 windows
+2025-03-03 16:18:30 - Using 49 features for model input
+2025-03-03 16:18:31 - Prepared data shape: (1267, 288, 49)
+2025-03-03 16:18:31 - Making predictions
+2025-03-03 16:18:31 - Model structure: WristLSTM
+2025-03-03 16:18:31 - Error processing file ../data\P6132_processed.csv: Expected 33 features, got 49
+2025-03-03 16:18:31 - Loaded processed data from P6809_processed.csv, shape: (170798, 51)
+2025-03-03 16:18:31 - Creating windows with size 288
+2025-03-03 16:18:31 - Window at index 0 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:31 - Window at index 0 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:31 - Window at index 144 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:31 - Window at index 288 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:32 - Window at index 170064 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:32 - Window at index 170208 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:32 - Window at index 170352 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:32 - Window at index 170352 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:32 - Window at index 170496 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:32 - Window at index 170496 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:32 - Created 1182 windows
+2025-03-03 16:18:32 - Using 49 features for model input
+2025-03-03 16:18:32 - Prepared data shape: (1182, 288, 49)
+2025-03-03 16:18:32 - Making predictions
+2025-03-03 16:18:32 - Model structure: WristLSTM
+2025-03-03 16:18:32 - Error processing file ../data\P6809_processed.csv: Expected 33 features, got 49
+2025-03-03 16:18:33 - Loaded processed data from P6936_processed.csv, shape: (175551, 51)
+2025-03-03 16:18:33 - Creating windows with size 288
+2025-03-03 16:18:33 - Window at index 0 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:33 - Window at index 0 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:33 - Window at index 144 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:33 - Window at index 288 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:33 - Window at index 174960 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:33 - Window at index 175104 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:33 - Window at index 175248 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:33 - Window at index 175248 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:33 - Created 1216 windows
+2025-03-03 16:18:33 - Using 49 features for model input
+2025-03-03 16:18:34 - Prepared data shape: (1216, 288, 49)
+2025-03-03 16:18:34 - Making predictions
+2025-03-03 16:18:34 - Model structure: WristLSTM
+2025-03-03 16:18:34 - Error processing file ../data\P6936_processed.csv: Expected 33 features, got 49
+2025-03-03 16:18:35 - Loaded processed data from P7015_processed.csv, shape: (206817, 51)
+2025-03-03 16:18:35 - Creating windows with size 288
+2025-03-03 16:18:35 - Window at index 0 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:35 - Window at index 0 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:35 - Window at index 144 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:35 - Window at index 288 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:35 - Window at index 206208 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:35 - Window at index 206352 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:35 - Window at index 206496 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:35 - Window at index 206496 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:35 - Created 1433 windows
+2025-03-03 16:18:35 - Using 49 features for model input
+2025-03-03 16:18:36 - Prepared data shape: (1433, 288, 49)
+2025-03-03 16:18:36 - Making predictions
+2025-03-03 16:18:36 - Model structure: WristLSTM
+2025-03-03 16:18:36 - Error processing file ../data\P7015_processed.csv: Expected 33 features, got 49
+2025-03-03 16:18:37 - Loaded processed data from P7703_processed.csv, shape: (211743, 51)
+2025-03-03 16:18:37 - Creating windows with size 288
+2025-03-03 16:18:37 - Window at index 0 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:37 - Window at index 0 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:37 - Window at index 144 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:37 - Window at index 288 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:37 - Window at index 211248 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:37 - Window at index 211392 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:37 - Created 1468 windows
+2025-03-03 16:18:37 - Using 49 features for model input
+2025-03-03 16:18:38 - Prepared data shape: (1468, 288, 49)
+2025-03-03 16:18:38 - Making predictions
+2025-03-03 16:18:38 - Model structure: WristLSTM
+2025-03-03 16:18:38 - Error processing file ../data\P7703_processed.csv: Expected 33 features, got 49
+2025-03-03 16:18:38 - Loaded processed data from P7969_processed.csv, shape: (151455, 51)
+2025-03-03 16:18:38 - Creating windows with size 288
+2025-03-03 16:18:38 - Window at index 0 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:38 - Window at index 0 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:38 - Window at index 144 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:38 - Window at index 288 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:39 - Window at index 150912 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:39 - Window at index 151056 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:39 - Created 1049 windows
+2025-03-03 16:18:39 - Using 49 features for model input
+2025-03-03 16:18:39 - Prepared data shape: (1049, 288, 49)
+2025-03-03 16:18:39 - Making predictions
+2025-03-03 16:18:39 - Model structure: WristLSTM
+2025-03-03 16:18:39 - Error processing file ../data\P7969_processed.csv: Expected 33 features, got 49
+2025-03-03 16:18:40 - Loaded processed data from P7989_processed.csv, shape: (160832, 51)
+2025-03-03 16:18:40 - Creating windows with size 288
+2025-03-03 16:18:40 - Window at index 0 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:40 - Window at index 0 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:40 - Window at index 144 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:40 - Window at index 288 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:40 - Window at index 160272 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:40 - Window at index 160416 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:40 - Created 1114 windows
+2025-03-03 16:18:40 - Using 49 features for model input
+2025-03-03 16:18:41 - Prepared data shape: (1114, 288, 49)
+2025-03-03 16:18:41 - Making predictions
+2025-03-03 16:18:41 - Model structure: WristLSTM
+2025-03-03 16:18:41 - Error processing file ../data\P7989_processed.csv: Expected 33 features, got 49
+2025-03-03 16:18:41 - Loaded processed data from P8532_processed.csv, shape: (153311, 51)
+2025-03-03 16:18:41 - Creating windows with size 288
+2025-03-03 16:18:41 - Window at index 0 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:41 - Window at index 0 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:41 - Window at index 144 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:41 - Window at index 288 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:42 - Window at index 152784 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:42 - Window at index 152928 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:42 - Created 1062 windows
+2025-03-03 16:18:42 - Using 49 features for model input
+2025-03-03 16:18:42 - Prepared data shape: (1062, 288, 49)
+2025-03-03 16:18:42 - Making predictions
+2025-03-03 16:18:42 - Model structure: WristLSTM
+2025-03-03 16:18:42 - Error processing file ../data\P8532_processed.csv: Expected 33 features, got 49
+2025-03-03 16:18:43 - Loaded processed data from P8698_processed.csv, shape: (180479, 51)
+2025-03-03 16:18:43 - Creating windows with size 288
+2025-03-03 16:18:43 - Window at index 0 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:43 - Window at index 0 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:43 - Window at index 144 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:43 - Window at index 288 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:43 - Window at index 180000 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:43 - Window at index 180144 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:43 - Created 1251 windows
+2025-03-03 16:18:43 - Using 49 features for model input
+2025-03-03 16:18:44 - Prepared data shape: (1251, 288, 49)
+2025-03-03 16:18:44 - Making predictions
+2025-03-03 16:18:44 - Model structure: WristLSTM
+2025-03-03 16:18:44 - Error processing file ../data\P8698_processed.csv: Expected 33 features, got 49
+2025-03-03 16:18:45 - Loaded processed data from P8848_processed.csv, shape: (200127, 51)
+2025-03-03 16:18:45 - Creating windows with size 288
+2025-03-03 16:18:45 - Window at index 0 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:45 - Window at index 0 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:45 - Window at index 144 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:45 - Window at index 288 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:45 - Window at index 199440 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:45 - Window at index 199584 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:45 - Window at index 199728 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:45 - Window at index 199728 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:45 - Created 1386 windows
+2025-03-03 16:18:45 - Using 49 features for model input
+2025-03-03 16:18:46 - Prepared data shape: (1386, 288, 49)
+2025-03-03 16:18:46 - Making predictions
+2025-03-03 16:18:46 - Model structure: WristLSTM
+2025-03-03 16:18:46 - Error processing file ../data\P8848_processed.csv: Expected 33 features, got 49
+2025-03-03 16:18:46 - Loaded processed data from P8905_processed.csv, shape: (172737, 51)
+2025-03-03 16:18:46 - Creating windows with size 288
+2025-03-03 16:18:46 - Window at index 0 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:46 - Window at index 0 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:46 - Window at index 144 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:46 - Window at index 288 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:47 - Window at index 172080 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:47 - Window at index 172224 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:47 - Window at index 172368 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:47 - Window at index 172368 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:47 - Created 1196 windows
+2025-03-03 16:18:47 - Using 49 features for model input
+2025-03-03 16:18:47 - Prepared data shape: (1196, 288, 49)
+2025-03-03 16:18:47 - Making predictions
+2025-03-03 16:18:47 - Model structure: WristLSTM
+2025-03-03 16:18:47 - Error processing file ../data\P8905_processed.csv: Expected 33 features, got 49
+2025-03-03 16:18:48 - Loaded processed data from P9413_processed.csv, shape: (157567, 51)
+2025-03-03 16:18:48 - Creating windows with size 288
+2025-03-03 16:18:48 - Window at index 0 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:48 - Window at index 0 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:48 - Window at index 144 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:48 - Window at index 288 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:48 - Window at index 156816 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:48 - Window at index 156960 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:48 - Window at index 157104 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:48 - Window at index 157104 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:48 - Window at index 157248 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:48 - Window at index 157248 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:48 - Created 1090 windows
+2025-03-03 16:18:48 - Using 49 features for model input
+2025-03-03 16:18:49 - Prepared data shape: (1090, 288, 49)
+2025-03-03 16:18:49 - Making predictions
+2025-03-03 16:18:49 - Model structure: WristLSTM
+2025-03-03 16:18:49 - Error processing file ../data\P9413_processed.csv: Expected 33 features, got 49
+2025-03-03 16:18:50 - Loaded processed data from P9696_processed.csv, shape: (189949, 51)
+2025-03-03 16:18:50 - Creating windows with size 288
+2025-03-03 16:18:50 - Window at index 0 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:50 - Window at index 0 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:50 - Window at index 144 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:50 - Window at index 288 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:50 - Window at index 189360 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:50 - Window at index 189504 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:50 - Window at index 189648 contains NaN values. Filling with forward fill.
+2025-03-03 16:18:50 - Window at index 189648 still contains NaN values after filling. Skipping.
+2025-03-03 16:18:50 - Created 1316 windows
+2025-03-03 16:18:50 - Using 49 features for model input
+2025-03-03 16:18:50 - Prepared data shape: (1316, 288, 49)
+2025-03-03 16:18:50 - Making predictions
+2025-03-03 16:18:50 - Model structure: WristLSTM
+2025-03-03 16:18:50 - Error processing file ../data\P9696_processed.csv: Expected 33 features, got 49
+2025-03-03 16:18:51 - Prediction completed for all files

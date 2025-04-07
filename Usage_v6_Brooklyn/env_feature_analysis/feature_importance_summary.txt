@@ -1,0 +1,66 @@
+Analysis of Environmental Features Impact on Emotional Labels
+==================================================
+
+1. Pearson Correlation Coefficients (Linear correlation between features and emotion labels)
+--------------------------------------------------
+Relative Humidity(%): -0.2694
+Black Globe Temperature(C): 0.2091
+Air Temperature(C): 0.2085
+CO2(ppm): -0.1823
+Noise(dB): 0.1507
+Longitude: -0.0894
+Latitude: 0.0894
+PM2.5(ug/m3): -0.0338
+PM10(ug/m3): -0.0308
+WGBT(C): 0.0087
+
+2. Random Forest Feature Importance
+--------------------------------------------------
+Relative Humidity(%): 0.1666
+Longitude: 0.1245
+CO2(ppm): 0.1086
+Air Temperature(C): 0.1032
+Latitude: 0.0913
+WGBT(C): 0.0900
+PM2.5(ug/m3): 0.0866
+PM10(ug/m3): 0.0861
+Black Globe Temperature(C): 0.0852
+Noise(dB): 0.0578
+
+3. Permutation Feature Importance (More robust method)
+--------------------------------------------------
+Relative Humidity(%): 0.1025
+Longitude: 0.0872
+CO2(ppm): 0.0541
+Latitude: 0.0190
+Air Temperature(C): 0.0152
+WGBT(C): 0.0116
+PM10(ug/m3): 0.0042
+PM2.5(ug/m3): 0.0028
+Black Globe Temperature(C): 0.0025
+Noise(dB): 0.0005
+
+4. Average Environmental Factors by Emotional State
+--------------------------------------------------
+                        PM2.5(ug/m3)  PM10(ug/m3)    CO2(ppm)  Noise(dB)    WGBT(C)  Air Temperature(C)  Black Globe Temperature(C)  Relative Humidity(%)   Latitude  Longitude
+BiLSTM_emotional_state                                                                                                                                                         
+Amusement/Meditation       12.282432    19.561824  420.570946  61.946296  24.771284           30.344595                   32.423649             46.866554  27.358209 -49.743235
+Baseline                   13.345898    20.565142  431.645369  58.285187  25.214896           29.338979                   31.007410             58.181512  28.284026 -51.426387
+Stress                     12.638043    19.587399  421.150402  60.804319  25.411099           30.516756                   32.701153             50.303271  33.024326 -60.045866
+
+5. ANOVA Analysis Results (Feature differences across emotional states)
+--------------------------------------------------
+Relative Humidity(%): F=271.8601, p=0.0000 *
+Black Globe Temperature(C): F=187.5052, p=0.0000 *
+Air Temperature(C): F=185.0458, p=0.0000 *
+CO2(ppm): F=130.0707, p=0.0000 *
+Noise(dB): F=83.3343, p=0.0000 *
+Longitude: F=65.0245, p=0.0000 *
+Latitude: F=65.0166, p=0.0000 *
+WGBT(C): F=12.2375, p=0.0000 *
+PM2.5(ug/m3): F=3.9197, p=0.0199 *
+PM10(ug/m3): F=3.6110, p=0.0271 *
+
+Conclusions:
+--------------------------------------------------
+Combined analysis indicates that the following environmental features have significant impact on emotional states:

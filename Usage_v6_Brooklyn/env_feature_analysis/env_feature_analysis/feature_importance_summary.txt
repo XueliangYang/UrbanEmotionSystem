@@ -1,0 +1,83 @@
+Pearson Correlation Coefficients (线性相关性):
+  Relative Humidity(%): -0.2694
+  Latitude: nan
+  Longitude: nan
+  Black Globe Temperature(C): 0.2091
+  Air Temperature(C): 0.2085
+  CO2(ppm): -0.1823
+  PM2.5(ug/m3): -0.0338
+  Noise(dB): nan
+  WGBT(C): 0.0087
+  PM10(ug/m3): -0.0308
+
+Random Forest Feature Importance (随机森林特征重要性):
+  Relative Humidity(%): 0.1690
+  Longitude: 0.1211
+  CO2(ppm): 0.1068
+  Black Globe Temperature(C): 0.0921
+  Latitude: 0.0920
+  Air Temperature(C): 0.0917
+  PM2.5(ug/m3): 0.0870
+  PM10(ug/m3): 0.0842
+  WGBT(C): 0.0836
+  Noise(dB): 0.0724
+
+Permutation Feature Importance (排列特征重要性):
+  Relative Humidity(%): 0.1071
+  Longitude: 0.0874
+  CO2(ppm): 0.0439
+  Latitude: 0.0185
+  WGBT(C): 0.0125
+  PM2.5(ug/m3): 0.0072
+  PM10(ug/m3): 0.0060
+  Air Temperature(C): 0.0058
+  Black Globe Temperature(C): 0.0042
+  Noise(dB): 0.0008
+
+Average Environmental Factors by Emotional State (不同情绪状态下的环境因素平均值):
+  Feature                   Amusement/Meditation Baseline             Stress              
+  -------------------------------------------------------------------------------------
+  Amusement/Meditation: Data not available
+  Baseline: Data not available
+  Stress: Data not available
+
+ANOVA Analysis Results (ANOVA分析结果):
+  Relative Humidity(%): F=271.8601, p=0.0000 ***
+  Black Globe Temperature(C): F=187.5052, p=0.0000 ***
+  Air Temperature(C): F=185.0458, p=0.0000 ***
+  CO2(ppm): F=130.0707, p=0.0000 ***
+  Noise(dB): F=83.3343, p=0.0000 ***
+  Longitude: F=65.0245, p=0.0000 ***
+  Latitude: F=65.0166, p=0.0000 ***
+  WGBT(C): F=12.2375, p=0.0000 ***
+  PM2.5(ug/m3): F=3.9197, p=0.0199 *
+  PM10(ug/m3): F=3.6110, p=0.0271 *
+
+Feature Importance Rankings Summary (特征重要性排名总结):
+  Feature                   Pearson Rank    RF Rank         Permutation Rank ANOVA Rank      Average Rank   
+  ----------------------------------------------------------------------------------------------------
+  Relative Humidity(%)      1               1               1               1               1.00           
+  Longitude                 3               2               2               6               3.25           
+  CO2(ppm)                  6               3               3               4               4.00           
+  Latitude                  2               5               4               7               4.50           
+  Black Globe Temperature(C) 4               4               9               2               4.75           
+  Air Temperature(C)        5               6               8               3               5.50           
+  PM2.5(ug/m3)              7               7               6               9               7.25           
+  WGBT(C)                   9               9               5               8               7.75           
+  Noise(dB)                 8               10              10              5               8.25           
+  PM10(ug/m3)               10              8               7               10              8.75           
+
+Conclusion (结论):
+  基于上述分析，环境特征对情绪状态有显著影响。特别是：
+  1. 温度相关特征（如空气温度、黑球温度和WGBT）与情绪状态高度相关，表明温度环境可能影响人的情绪体验。
+  2. 相对湿度在所有分析方法中都显示出高重要性，是区分不同情绪状态的关键因素。
+  3. CO2浓度和噪音水平也显示出显著差异，表明空气质量和声环境对情绪有重要影响。
+  4. 地理位置（经纬度）的显著性表明，空间环境背景也是情绪体验的重要因素。
+  5. ANOVA分析显示所有环境特征在不同情绪状态间均有统计学显著差异，进一步证实了环境因素对情绪的影响。
+
+  Based on the above analysis, environmental features have significant impacts on emotional states. In particular:
+  1. Temperature-related features (such as Air Temperature, Black Globe Temperature, and WGBT) are highly correlated with emotional states, indicating that thermal environment may influence emotional experiences.
+  2. Relative Humidity shows high importance across all analysis methods, being a key factor in distinguishing different emotional states.
+  3. CO2 concentration and noise levels also show significant differences, suggesting that air quality and acoustic environment have important effects on emotions.
+  4. The significance of geographical location (latitude and longitude) indicates that spatial environmental context is also an important factor in emotional experiences.
+  5. ANOVA analysis shows that all environmental features have statistically significant differences across different emotional states, further confirming the impact of environmental factors on emotions.

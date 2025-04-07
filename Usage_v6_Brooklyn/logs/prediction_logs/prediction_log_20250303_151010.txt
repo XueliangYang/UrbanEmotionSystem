@@ -1,0 +1,69 @@
+2025-03-03 15:10:10 - Using device: cpu
+2025-03-03 15:10:10 - Loading model from: ../models/best_model_v6.pth
+2025-03-03 15:10:10 - Model initialized with:
+2025-03-03 15:10:10 -   - Input size: 33
+2025-03-03 15:10:10 -   - Hidden size: 192
+2025-03-03 15:10:10 -   - Num layers: 2
+2025-03-03 15:10:10 -   - Num heads: 4
+2025-03-03 15:10:10 -   - Num classes: 3
+2025-03-03 15:10:10 - Inspecting model architecture...
+2025-03-03 15:10:10 - Total parameters: 2,041,180
+2025-03-03 15:10:10 - Trainable parameters: 2,041,180
+2025-03-03 15:10:10 - Model has non-standard structure
+2025-03-03 15:10:10 - Model modules:
+2025-03-03 15:10:10 -   - feature_expansion: FeatureExpansion
+2025-03-03 15:10:10 -   - feature_expansion.expand: Sequential
+2025-03-03 15:10:10 -   - feature_expansion.expand.0: Linear [in: 33, out: 165]
+2025-03-03 15:10:10 -   - feature_expansion.expand.1: GELU
+2025-03-03 15:10:10 -   - feature_expansion.expand.2: Dropout
+2025-03-03 15:10:10 -   - feature_expansion.expand.3: Linear [in: 165, out: 33]
+2025-03-03 15:10:10 -   - feature_expansion.expand.4: LayerNorm
+2025-03-03 15:10:10 -   - pos_encoder: PositionalEncoding
+2025-03-03 15:10:10 -   - input_proj: Linear [in: 33, out: 192]
+2025-03-03 15:10:10 -   - lstm: LSTM [input: 192, hidden: 192, layers: 2]
+2025-03-03 15:10:10 -   - lstm_proj: Linear [in: 384, out: 192]
+2025-03-03 15:10:10 -   - attention: MultiHeadAttention
+2025-03-03 15:10:10 -   - attention.q_linear: Linear [in: 192, out: 192]
+2025-03-03 15:10:10 -   - attention.k_linear: Linear [in: 192, out: 192]
+2025-03-03 15:10:10 -   - attention.v_linear: Linear [in: 192, out: 192]
+2025-03-03 15:10:10 -   - attention.dropout: Dropout
+2025-03-03 15:10:10 -   - attention.out: Linear [in: 192, out: 192]
+2025-03-03 15:10:10 -   - feature_enhancement: EnhancedFeatureBlock
+2025-03-03 15:10:10 -   - feature_enhancement.linear1: Linear [in: 192, out: 768]
+2025-03-03 15:10:10 -   - feature_enhancement.linear2: Linear [in: 768, out: 192]
+2025-03-03 15:10:10 -   - feature_enhancement.norm1: LayerNorm
+2025-03-03 15:10:10 -   - feature_enhancement.norm2: LayerNorm
+2025-03-03 15:10:10 -   - feature_enhancement.dropout: Dropout
+2025-03-03 15:10:10 -   - attention_norm: LayerNorm
+2025-03-03 15:10:10 -   - fc: Sequential
+2025-03-03 15:10:10 -   - fc.0: Linear [in: 192, out: 96]
+2025-03-03 15:10:10 -   - fc.1: LayerNorm
+2025-03-03 15:10:10 -   - fc.2: GELU
+2025-03-03 15:10:10 -   - fc.3: Dropout
+2025-03-03 15:10:10 -   - fc.4: Linear [in: 96, out: 48]
+2025-03-03 15:10:10 -   - fc.5: LayerNorm
+2025-03-03 15:10:10 -   - fc.6: GELU
+2025-03-03 15:10:10 -   - fc.7: Dropout
+2025-03-03 15:10:10 -   - fc.8: Linear [in: 48, out: 3]
+2025-03-03 15:10:10 - Potential output layer: fc.8 (output dim: 3)
+2025-03-03 15:10:10 - Testing model predictions on random data...
+2025-03-03 15:10:10 - Test output shape: torch.Size([4, 288, 3])
+2025-03-03 15:10:10 - Test output range: min=-5.663012504577637, max=-5.662891387939453
+2025-03-03 15:10:10 - Output shape has 3 dimensions, expected 2
+2025-03-03 15:10:10 - Model output format is not as expected for classification
+2025-03-03 15:10:10 - Model prediction test failed. Attempting to patch model output.
+2025-03-03 15:10:10 - Patching model to ensure classification outputs
+2025-03-03 15:10:10 - Model output patched successfully
+2025-03-03 15:10:10 - Testing model predictions on random data...
+2025-03-03 15:10:11 - Test output shape: torch.Size([4, 3])
+2025-03-03 15:10:11 - Test output range: min=-5.662981033325195, max=-5.662947654724121
+2025-03-03 15:10:11 - Model produces expected 3-class classification outputs
+2025-03-03 15:10:11 - Probabilities sum to ~1: tensor([1.0000, 1.0000, 1.0000, 1.0000])
+2025-03-03 15:10:11 - Predicted classes: tensor([2, 2, 2, 2])
+2025-03-03 15:10:11 - Prediction values are within expected range (0-2)
+2025-03-03 15:10:11 - Model patching successful - outputs now in correct format
+2025-03-03 15:10:11 - Output layer dimension (from Sequential): 3
+2025-03-03 15:10:11 - Model loaded successfully
+2025-03-03 15:10:11 - Initialized prediction with model path: ../models/best_model_v6.pth
+2025-03-03 15:10:11 - Found 0 processed files by searching directories
+2025-03-03 15:10:11 - No processed files found in ../data
